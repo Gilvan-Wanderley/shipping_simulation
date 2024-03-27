@@ -1,1 +1,3 @@
-print('Hi')
+from app import App
+
+app = App()
