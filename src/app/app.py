@@ -1,5 +1,5 @@
 import tkinter as tk
-from .components import MenuBar
+from .components import MenuBar, ContentLayout
 
 class App(tk.Tk):
     def __init__(self) -> None:
@@ -10,8 +10,10 @@ class App(tk.Tk):
         self.mainloop()
 
     def setup(self) -> None:
-        self.menubar = MenuBar(self)
-        self.configure(menu=self.menubar)
+        self._menubar = MenuBar(self)
+        self.configure(menu=self._menubar)
+        self._content = ContentLayout(self)
+        self._content.pack(side='left', fill='both', expand=True)
 
 
         pass
