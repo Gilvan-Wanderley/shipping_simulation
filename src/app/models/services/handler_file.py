@@ -7,11 +7,11 @@ class HandlerFile():
 
     @property
     def path(self) -> str:
-        return self.__path
+        return self._path
     
     @path.setter
     def path(self, path: str):
-        self.__path = path
+        self._path = path
 
     def save_file(self, simulation_obj: SimulationHandlerObjectValue):
         simulation_dict = simulation_obj.to_dict()
