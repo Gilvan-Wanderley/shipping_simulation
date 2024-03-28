@@ -1,0 +1,18 @@
+{
+    "ships": [
+        {
+            "name": "Ship A",
+            "capacity": 10000.0,
+            "frequency": 1.0
+        },
+        {
+            "name": "Ship B",
+            "capacity": 20000.0,
+            "frequency": 4.0
+        }
+    ],
+    "port": {
+        "num_berths": 3,
+        "unload_rate": 3500.0
+    }
+}
