@@ -1,4 +1,4 @@
-from ..utils import SimulationObjectValue
+from ..utils.objs import SimulationObjectValue
 
 class SimulationBuilder():
     def __init__(self) -> None:

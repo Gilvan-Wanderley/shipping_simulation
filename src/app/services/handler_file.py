@@ -1,6 +1,6 @@
 import json
 from typing import Union
-from ..utils import SimulationObjectValue, ShipPropertiesObjectValue
+from ..utils.objs import SimulationObjectValue, ShipPropertiesObjectValue
 
 class HandlerFile():
     def __init__(self) -> None:

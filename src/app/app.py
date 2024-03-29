@@ -1,5 +1,5 @@
 import tkinter as tk
-from .components import MenuBar, ContentLayout, Footer
+from .views import MenuBar, ContentLayout, Footer
 from .simulater import Simulater
 
 class App(tk.Tk):
