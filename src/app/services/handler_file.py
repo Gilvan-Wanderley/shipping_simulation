@@ -37,6 +37,6 @@ class HandlerFile():
         simulation_handler.port.unload_rate = simulation_dict['port']['unload_rate']
 
         for ship in simulation_dict['ships']:
-            simulation_handler.ship.add(ShipPropertiesObjectValue(**ship))
+            simulation_handler.ships.add(ShipPropertiesObjectValue(**ship))
 
         return simulation_handler

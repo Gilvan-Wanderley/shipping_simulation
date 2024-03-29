@@ -8,6 +8,9 @@ class ShipObjectValue():
     def entities(self) -> list[ShipPropertiesObjectValue]:
         return self._entities
     
+    def is_complete(self) -> bool:
+        return len(self._entities) > 0
+
     def ship_props(self, name: str) -> ShipPropertiesObjectValue:
         if name not in self.ships_names():
             raise Exception(f'Invalid name ({name})!')

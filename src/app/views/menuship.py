@@ -46,7 +46,7 @@ class MenuShip(tk.Frame):
                                        self._vars['edit']['capacity'], 
                                        self._vars['edit']['frequency'])
         ship_name = self._vars['edit']['selected'].get()
-        ship_prop = self._simulater.builder.simulation_obj.ship.ship_props(ship_name)
+        ship_prop = self._simulater.builder.sim_obj.ships.ship_props(ship_name)
         self._vars['edit']['capacity'].set(ship_prop.capacity)
         self._vars['edit']['frequency'].set(ship_prop.frequency)
 
@@ -57,7 +57,7 @@ class MenuShip(tk.Frame):
         self._vars['edit']['frequency'].set(0.0)
 
     def _onselect(self, event) -> None:
-        ship_prop = self._simulater.builder.simulation_obj.ship.ship_props(event.widget.get())
+        ship_prop = self._simulater.builder.sim_obj.ships.ship_props(event.widget.get())
         self._vars['edit']['capacity'].set(ship_prop.capacity)
         self._vars['edit']['frequency'].set(ship_prop.frequency)
         self._content.edit.data.btn_delete['state'] = 'enable'
@@ -113,7 +113,7 @@ class MenuShip(tk.Frame):
         edit.data.cbx_ship = ttk.Combobox(edit.data, textvariable=self._vars['edit']['selected'])
         edit.data.cbx_ship.grid(row=0, column=0, columnspan=2, sticky=tk.E+tk.W, pady=4)
         edit.data.cbx_ship.bind("<<ComboboxSelected>>", lambda event : self._onselect(event))
-        edit.data.cbx_ship['values'] = self._simulater.builder.simulation_obj.ship.ships_names()
+        edit.data.cbx_ship['values'] = self._simulater.builder.sim_obj.ships.ships_names()
 
         edit.data.lbl_capacity = tk.Label(edit.data, text='Capacity: ')
         edit.data.lbl_capacity.grid(row=1, column=0, sticky=tk.E, pady=4)

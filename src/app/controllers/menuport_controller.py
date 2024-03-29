@@ -30,7 +30,7 @@ class MenuPortController():
             unoading_ratevar.set(0.0)
             return
         
-        self._simulater.builder.simulation_obj.port.num_berths = nun_berths
-        self._simulater.builder.simulation_obj.port.unload_rate = unoading_rate
+        self._simulater.builder.sim_obj.port.num_berths = nun_berths
+        self._simulater.builder.sim_obj.port.unload_rate = unoading_rate
         messagebox.showinfo('Port','Port updated!')
         self._app.rerender()

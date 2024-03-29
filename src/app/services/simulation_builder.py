@@ -5,10 +5,10 @@ class SimulationBuilder():
         self._simulation_obj = SimulationObjectValue()
 
     @property
-    def simulation_obj(self) -> SimulationObjectValue:
+    def sim_obj(self) -> SimulationObjectValue:
         return self._simulation_obj
     
-    @simulation_obj.setter
-    def simulation_obj(self, sim_obj: SimulationObjectValue) -> None:
+    @sim_obj.setter
+    def sim_obj(self, sim_obj: SimulationObjectValue) -> None:
         self._simulation_obj = sim_obj
 

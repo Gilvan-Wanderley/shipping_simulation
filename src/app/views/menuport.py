@@ -11,8 +11,8 @@ class MenuPort(tk.Frame):
         self._controller = MenuPortController(simulater, self._app)
         self._simulater = simulater
 
-        self._num_berths = tk.IntVar(value= simulater.builder.simulation_obj.port.num_berths)
-        self._unloading_rate = tk.DoubleVar(value= simulater.builder.simulation_obj.port.unload_rate)
+        self._num_berths = tk.IntVar(value= simulater.builder.sim_obj.port.num_berths)
+        self._unloading_rate = tk.DoubleVar(value= simulater.builder.sim_obj.port.unload_rate)
         self.build_view()
 
     @property

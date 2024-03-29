@@ -27,7 +27,7 @@ class MenuBarController():
         (response, simulation_obj) = self._simulater.handler_file.load_obj(new_path)
         if response:
             self._simulater.handler_file.path = new_path
-            self._simulater.builder.simulation_obj = simulation_obj
+            self._simulater.builder.sim_obj = simulation_obj
             messagebox.showinfo('Load', 'Simulation loaded successfuly.')
         else:
             messagebox.showerror('Erro', 'Simulation not loaded.')
@@ -43,6 +43,6 @@ class MenuBarController():
         return True
     
     def _save(self) -> None:
-        self._simulater.handler_file.save_file(self._simulater.builder.simulation_obj)
+        self._simulater.handler_file.save_file(self._simulater.builder.sim_obj)
         messagebox.showinfo('Saved', 'Simulation saved successfuly.')
         self._app.rerender()

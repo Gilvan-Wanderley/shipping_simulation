@@ -11,7 +11,7 @@ class MenuShipController():
 
     def create_command(self, namevar: tk.StringVar, capacityvar: tk.DoubleVar, frequencyvar: tk.DoubleVar):
         name = namevar.get()
-        if name in self._simulater.builder.simulation_obj.ship.ships_names():
+        if name in self._simulater.builder.sim_obj.ships.ships_names():
             messagebox.showerror('Erro', 'There is a ship with this name, change ship name!')
             return
 
@@ -23,7 +23,7 @@ class MenuShipController():
         if type(frequency) is Exception:
             return 
         
-        self._simulater.builder.simulation_obj.ship.add(ShipPropertiesObjectValue(**{'name':name, 
+        self._simulater.builder.sim_obj.ships.add(ShipPropertiesObjectValue(**{'name':name, 
                                                                                      'capacity':capacity, 
                                                                                      'frequency': frequency}))
         messagebox.showinfo('Ship','Ship created successfully.')
@@ -31,7 +31,7 @@ class MenuShipController():
 
     def update_command(self, namevar: tk.StringVar, capacityvar: tk.DoubleVar, frequencyvar: tk.DoubleVar):
         name = namevar.get()
-        if name not in self._simulater.builder.simulation_obj.ship.ships_names():
+        if name not in self._simulater.builder.sim_obj.ships.ships_names():
             messagebox.showerror('Erro', "There isn't a ship with this name, change ship name!")
             return
         
@@ -43,17 +43,17 @@ class MenuShipController():
         if type(frequency) is Exception:
             return 
 
-        self._simulater.builder.simulation_obj.ship.edit(name, capacity, frequency)
+        self._simulater.builder.sim_obj.ships.edit(name, capacity, frequency)
         messagebox.showinfo('Ship','Ship edited successfully.')
         self._app.rerender()
 
     def delete_command(self, namevar: tk.StringVar):
         name = namevar.get()
-        if name not in self._simulater.builder.simulation_obj.ship.ships_names():
+        if name not in self._simulater.builder.sim_obj.ships.ships_names():
             messagebox.showerror('Erro', "There isn't a ship with this name, change ship name!")
             return
 
-        self._simulater.builder.simulation_obj.ship.remove(name)
+        self._simulater.builder.sim_obj.ships.remove(name)
         messagebox.showinfo('Ship','Ship removed successfully.')
         self._app.rerender()
 
