@@ -27,6 +27,7 @@ class MenuBarController():
         (response, simulation_obj) = self._simulater.handler_file.load_obj(new_path)
         if response:
             self._simulater.handler_file.path = new_path
+            self._simulater.builder.simulation_obj = simulation_obj
             messagebox.showinfo('Load', 'Simulation loaded successfuly.')
         else:
             messagebox.showerror('Erro', 'Simulation not loaded.')

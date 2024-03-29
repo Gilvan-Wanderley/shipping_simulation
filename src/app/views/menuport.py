@@ -24,20 +24,23 @@ class MenuPort(tk.Frame):
         return self._unloading_rate
     
     def build_view(self) -> None:
-        self.__image = ImageSource.get_image('port_menu', (180,134))
-        self.__tilte = ttk.Label(self, text='Port Menu')
-        self.__tilte.pack()
+        self._image = ImageSource.get_image('port_menu', (180,134))
+        self._tilte = ttk.Label(self, text='Port Menu')
+        self._tilte.pack()
 
-        self.__content = ttk.Notebook(self)
-        self.__content.pack(fill="both", expand=True, padx=4, pady=4)
+        self._content = ttk.Notebook(self)
+        self._content.pack(fill="both", expand=True, padx=4, pady=4)
 
-        self.__content.settings = self.__setting_tab()
+        self._content.settings = self._setting_tab()
 
-    def __setting_tab(self) -> ttk.Frame:
+    def _update_command(self) -> None:
+         self._controller.update_command(self.num_berths, self.unloading_rate)
+
+    def _setting_tab(self) -> ttk.Frame:
         settings = ttk.Frame(self)
-        self.__content.add(settings, text='Settings')
+        self._content.add(settings, text='Settings')
 
-        settings.img = tk.Label(settings, image=self.__image)
+        settings.img = tk.Label(settings, image=self._image)
         settings.img.grid(row=0, column=0, sticky=tk.N+tk.S)
 
         settings.data = ttk.Frame(settings)
@@ -61,8 +64,7 @@ class MenuPort(tk.Frame):
         settings.data.lbl_unloading_rate_unit.grid(row=1, column=2, sticky=tk.W)
 
         settings.data.btn_update = ttk.Button(settings.data, text='Update', 
-                                              command= lambda: self._controller.update_command(self.num_berths,
-                                                                                               self.unloading_rate))
+                                              command= self._update_command)
         settings.data.btn_update.grid(row=3, column=0, columnspan=3, sticky=tk.E, pady=4)
 
         return settings
