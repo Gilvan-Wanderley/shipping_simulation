@@ -1,9 +1,8 @@
-from .ship_properties_obj import ShipPropertiesObjectValue
 from .ship_obj import ShipObjectValue
 from .port_properties_obj import PortPropertiesObjectValue
 
 
-class SimulationHandlerObjectValue():
+class SimulationObjectValue():
     def __init__(self) -> None:
         self._port = PortPropertiesObjectValue()
         self._ship = ShipObjectValue()

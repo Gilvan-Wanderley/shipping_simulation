@@ -1,5 +1,5 @@
 import tkinter as tk
-from ..models import Simulater
+from ..simulater import Simulater
 
 class ContentLayout(tk.Frame):
     def __init__(self, app: tk.Tk, simulater: Simulater) -> None:

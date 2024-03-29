@@ -1,5 +1,5 @@
 import tkinter as tk
-from ..models import Simulater
+from ..simulater import Simulater
 
 
 class Footer(tk.Frame):

@@ -1,6 +1,6 @@
 import tkinter as tk
 from .components import MenuBar, ContentLayout, Footer
-from .models import Simulater
+from .simulater import Simulater
 
 class App(tk.Tk):
     def __init__(self) -> None:

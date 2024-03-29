@@ -1,10 +1,11 @@
 from tkinter import filedialog
 from tkinter import messagebox
-from ..models import Simulater
+from ..simulater import Simulater
 
 class MenuBarController():
-    def __init__(self, simulater: Simulater) -> None:
+    def __init__(self, simulater: Simulater, app) -> None:
             self._simulater = simulater
+            self._app = app
 
     def save_command(self) -> None:
         if self._simulater.handler_file.path == '':
@@ -23,9 +24,13 @@ class MenuBarController():
                                                           "*.bky")])
         if new_path=='':
             return
-        simulation_obj = self._simulater.handler_file.load_obj(new_path)
-        #Need a build model
-        pass
+        (response, simulation_obj) = self._simulater.handler_file.load_obj(new_path)
+        if response:
+            self._simulater.handler_file.path = new_path
+            messagebox.showinfo('Load', 'Simulation loaded successfuly.')
+        else:
+            messagebox.showerror('Erro', 'Simulation not loaded.')
+        self._app.rerender()
     
 
     def _is_selected(self) -> bool:
@@ -37,6 +42,6 @@ class MenuBarController():
         return True
     
     def _save(self) -> None:
-        self._simulater.handler_file.save_file() #Need a build model as a input here
+        self._simulater.handler_file.save_file(self._simulater.builder.simulation_obj)
         messagebox.showinfo('Saved', 'Simulation saved successfuly.')
         self._app.rerender()

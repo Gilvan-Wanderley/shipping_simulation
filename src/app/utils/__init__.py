@@ -1,4 +1,4 @@
-from .simulation_handler_obj import SimulationHandlerObjectValue
+from .simulation_obj import SimulationObjectValue
 from .ship_properties_obj import ShipPropertiesObjectValue
 from .port_properties_obj import PortPropertiesObjectValue
 from .ship_obj import ShipObjectValue

@@ -1,5 +1,5 @@
 import tkinter as tk
-from ..models import Simulater
+from ..simulater import Simulater
 from ..controllers import MenuBarController
 
 class MenuBar(tk.Menu):
@@ -7,7 +7,7 @@ class MenuBar(tk.Menu):
         super().__init__(app)
         self._app = app
         self._simulater = simulater
-        self._controller = MenuBarController(simulater)
+        self._controller = MenuBarController(simulater, app)
 
         self.options_menu = tk.Menu(self, tearoff=0)
         self.options_menu.add_command(label='Save', 
