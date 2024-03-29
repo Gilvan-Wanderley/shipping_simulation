@@ -1,11 +1,12 @@
 import tkinter as tk
 from ..simulater import Simulater
+from .menu_port import MenuPort
 
 class ContentLayout(tk.Frame):
-    def __init__(self, app: tk.Tk, simulater: Simulater) -> None:
+    def __init__(self, app, simulater: Simulater) -> None:
         super().__init__(app, background='#D9D9D9')
         
-        self._frame_port = tk.Frame(self, height=50, width=50, background='blue')
+        self._frame_port = MenuPort(self, simulater)
         self._frame_ship = tk.Frame(self, height=50, width=50, background='blue')
         self._frame_animation = tk.Frame(self, height=50, width=100, background='blue')
         self._frame_resume = tk.Frame(self, height=50, width=50, background='blue')
