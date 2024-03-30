@@ -1,6 +1,6 @@
 
 
-class PortPropertiesObjectValue():
+class PortPropertiesValueObject():
     def __init__(self) -> None:
         self._num_berths: int = None
         self._unload_rate: float = None

@@ -1,18 +1,18 @@
-from .ship_obj import ShipObjectValue
-from .port_properties_obj import PortPropertiesObjectValue
+from .ship_obj import ShipValueObject
+from .port_properties_obj import PortPropertiesValueObject
 
 
-class SimulationObjectValue():
+class SimulationValueObject():
     def __init__(self) -> None:
-        self._port = PortPropertiesObjectValue()
-        self._ships = ShipObjectValue()
+        self._port = PortPropertiesValueObject()
+        self._ships = ShipValueObject()
 
     @property
-    def port(self) -> PortPropertiesObjectValue:
+    def port(self) -> PortPropertiesValueObject:
         return self._port
     
     @property
-    def ships(self) -> ShipObjectValue:
+    def ships(self) -> ShipValueObject:
         return self._ships
 
     def is_complete(self) -> bool:

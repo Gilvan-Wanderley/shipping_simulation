@@ -27,7 +27,5 @@ class MenuBuilderController:
             end_timevar.set(0.0)
             return
         
-         #self.simulater.run_up(end_time) Need run simulation and models implementation
-         print('Running...')
-         
+         self._simulater.run_up(end_time) 
          self._app.rerender()

@@ -1,5 +1,5 @@
 from ..simulater import Simulater
-from ..utils.objs import ShipPropertiesObjectValue
+from ..utils.objs import ShipPropertiesValueObject
 from tkinter import messagebox
 import tkinter as tk
 
@@ -23,7 +23,7 @@ class MenuShipController():
         if type(frequency) is Exception:
             return 
         
-        self._simulater.builder.sim_obj.ships.add(ShipPropertiesObjectValue(**{'name':name, 
+        self._simulater.builder.sim_obj.ships.add(ShipPropertiesValueObject(**{'name':name, 
                                                                                      'capacity':capacity, 
                                                                                      'frequency': frequency}))
         messagebox.showinfo('Ship','Ship created successfully.')
