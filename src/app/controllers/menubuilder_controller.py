@@ -6,7 +6,7 @@ from ..simulater import Simulater
 class MenuBuilderController:
     def __init__(self, simulater: Simulater, app) -> None:
         self._simulater = simulater
-        self._app = app
+        self._app = app.master
 
     def run_simulation_command(self, end_timevar: tk.DoubleVar):
          if not self._simulater.builder.sim_obj.port.is_complete():

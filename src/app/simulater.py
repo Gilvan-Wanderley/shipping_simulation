@@ -1,5 +1,7 @@
+import simpy
 from .services import HandlerFile, SimulationBuilder
 from .utils.objs import SimulationResultsValueObject
+from .models import Simulation, Container, StandardInputOutput
 
 class Simulater:
     def __init__(self) -> None:
@@ -20,7 +22,9 @@ class Simulater:
         return self._results 
     
     def run_up(self, end_time: float) -> None:
-        print('Running...')
-        # simulation = Simulation(self.builder) 
-        # simulation.run_up(end_time)
-        # self._result = simulation.results
+        container = Container(simpy.Environment(),
+                              StandardInputOutput(),
+                              self._builder)
+        simulation = Simulation(container) 
+        simulation.run_up(end_time)
+        self._results = simulation.results

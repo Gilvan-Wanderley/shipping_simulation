@@ -5,7 +5,7 @@ from tkinter import messagebox
 class MenuPortController():
     def __init__(self, simulater: Simulater, app) -> None:
         self._simulater = simulater
-        self._app = app
+        self._app = app.master
 
     def update_command(self, num_berthsvar: tk.IntVar, unoading_ratevar: tk.DoubleVar) -> None:
         nun_berths = 0

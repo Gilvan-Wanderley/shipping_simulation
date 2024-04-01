@@ -7,7 +7,7 @@ class App(tk.Tk):
         super().__init__()
         self._simulater = Simulater()
         self.title('Shipping Simulation')
-        self.geometry('1024x740')
+        self.geometry('1050x800')
         self.build_view()
         self.mainloop()
     

@@ -30,6 +30,7 @@ class ShipValueObject():
     def remove(self, name: str) -> None:
         if name not in self.ships_names():
             raise Exception(f'Invalid name ({name})!')
+        self.entities.remove([e for e in self.entities if e.name == name][0])
 
     def edit(self, name: str, capacity: float, frequency: float) -> None:
         if name not in self.ships_names():

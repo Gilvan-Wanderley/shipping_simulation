@@ -7,7 +7,7 @@ import tkinter as tk
 class MenuShipController():
     def __init__(self, simulater: Simulater, app) -> None:
         self._simulater = simulater
-        self._app = app
+        self._app = app.master
 
     def create_command(self, namevar: tk.StringVar, capacityvar: tk.DoubleVar, frequencyvar: tk.DoubleVar):
         name = namevar.get()
@@ -35,11 +35,11 @@ class MenuShipController():
             messagebox.showerror('Erro', "There isn't a ship with this name, change ship name!")
             return
         
-        capacity = self.__validate_capacity(capacityvar)
+        capacity = self._validate_capacity(capacityvar)
         if type(capacity) is Exception:
             return 
 
-        frequency = self.__validate_frequency(frequencyvar)
+        frequency = self._validate_frequency(frequencyvar)
         if type(frequency) is Exception:
             return 
 
