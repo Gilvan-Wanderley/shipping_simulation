@@ -1,11 +1,10 @@
 import tkinter as tk
 from .ship_view import ShipView
-from ...models.entities import Ship, ShipStatus
-from ...services.image_handler import ImageSource
+from ...models.entities import Ship
 
 
 class Flowsheet(tk.Canvas):
-    def __init__(self, master: tk.Misc) -> None:
+    def __init__(self, master: tk.Misc, simulater) -> None:
         super().__init__(master, background='#0096C7',height=200, width=1030)
         self._ships_waitting : list[ShipView] = []
         self._ships_unloading : list[ShipView] = []

@@ -27,5 +27,11 @@ class TableView(ttk.Frame):
     def table(self) -> ttk.Treeview:
         return self._table
     
-    def add_values(self, index: int, values: list):
-        self._table.insert(parent='', index=index, values=values)
+    def add_value(self, index: int, values: list) -> None:
+        self._table.insert(parent='', index=index, iid=index, values=values)
+
+    def remove_value(self, index: int) -> None:
+        self._table.delete(index)
+
+    def exist(self, index: int) -> bool:
+        return self._table.exists(index)

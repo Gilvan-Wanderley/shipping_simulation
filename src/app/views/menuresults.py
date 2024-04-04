@@ -9,7 +9,7 @@ class MenuResults(tk.Frame):
         self._app = master.master
         self._simulater = simulater
         self._results ={
-            'unloaded_total': tk.DoubleVar(value=simulater.results.unloaded_total),
+            'unloaded_total': tk.DoubleVar(value="{:,.2f}".format(self._simulater.results.unloaded_total)),
             'ships_arrival': tk.IntVar(value=simulater.results.ships_arrival),
             'ships_departure': tk.IntVar(value=simulater.results.ships_departure),
             'ships': simulater.results.ships_results 
@@ -21,6 +21,15 @@ class MenuResults(tk.Frame):
         tilte.pack(padx=4, pady=4)
         self._ships_frame()
         self._port_frame()
+    
+    def update_results(self) -> None:
+        self._simulater.simulation.update_result_obj()
+        self._results['unloaded_total'].set("{:,.1f}".format(self._simulater.results.unloaded_total))
+        self._results['ships_arrival'].set(self._simulater.results.ships_arrival)
+        self._results['ships_departure'].set(self._simulater.results.ships_departure)
+        self._results['ships'] = self._simulater.results.ships_results 
+        self._load_ships(self._ship_table)
+        
 
     def _port_frame(self) -> None: 
         port_menu = ttk.LabelFrame(self, text='Port' )
@@ -68,17 +77,19 @@ class MenuResults(tk.Frame):
                           'width':80,
                           'anchor':'center'},
             }
-        
-        ship_menu.table = TableView(ship_menu, header)
-        ship_menu.table.pack(side="bottom", fill="both",expand=True, padx=4, pady=4)
-        ship_menu.table.table.configure(height=6)
+        self._ship_table = TableView(ship_menu, header)
+        self._ship_table = TableView(ship_menu, header)
+        self._ship_table.pack(side="bottom", fill="both",expand=True, padx=4, pady=4)
+        self._ship_table.table.configure(height=6)
 
-        self._load_ships(ship_menu.table)
+        self._load_ships(self._ship_table)
 
     def _load_ships(self, table: TableView):
         for i, ship in enumerate(self._results['ships']):
-            table.add_values(i, [ship.name,
-                                 ship.unloaded,
+            if table.exist(i):
+                table.remove_value(i)
+            table.add_value(i, [ship.name,
+                                 "{:,.1f}".format(ship.unloaded),
                                  ship.arrival,
                                  ship.waitting, 
                                  ship.dock, 

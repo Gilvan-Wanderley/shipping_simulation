@@ -1,8 +1,7 @@
+import time
 import tkinter as tk
-from tkinter import ttk
 from ...models.entities import Ship, ShipStatus
 from ...services.image_handler import ImageSource
-import time
 from PIL import ImageTk
 
 

@@ -29,7 +29,7 @@ class MenuBarController():
         if response:
             self._simulater.handler_file.path = new_path
             self._simulater.builder.sim_obj = simulation_obj
-            self._simulater.results = SimulationResultsValueObject()
+            # self._simulater.results = SimulationResultsValueObject()
             messagebox.showinfo('Load', 'Simulation loaded successfuly.')
         else:
             messagebox.showerror('Erro', 'Simulation not loaded.')

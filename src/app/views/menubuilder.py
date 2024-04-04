@@ -76,4 +76,4 @@ class MenuBuilder(tk.Frame):
     def _load_ships_data(self, table: TableView) -> None:
         sim_obj = self._simulater.builder.sim_obj
         for i, prop in enumerate(sim_obj.ships.entities):
-            table.add_values(i, [prop.name, prop.capacity, prop.frequency])
+            table.add_value(i, [prop.name, "{:,.1f}".format(prop.capacity), prop.frequency])

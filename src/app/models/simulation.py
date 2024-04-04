@@ -4,7 +4,7 @@ from .entities import Port, Ship, GenerateShip
 from ..utils.objs import ShipResultsValueObject
 
 class Simulation:
-    def __init__(self, container: Container) -> None:
+    def __init__(self, container: Container, results: SimulationResultsValueObject) -> None:
         self._container = container
 
         port_data = container.build.sim_obj.port
@@ -19,7 +19,7 @@ class Simulation:
             container.env.process(generate.run(self.port))
             self._source_ships.append((ship, generate))
 
-        self._results = SimulationResultsValueObject()
+        self._results = results
 
     @property
     def port(self) -> Port:
@@ -35,11 +35,14 @@ class Simulation:
 
     def run_up(self, end_time: float):
         self._container.env.run(until=end_time+0.001)
+        self.update_result_obj()
 
+    def update_result_obj(self) -> None:
         self._results.ships_arrival = len(self.port.records.arrival) 
         self._results.ships_departure = len(self.port.records.departured)
         self._results.unloaded_total = self.port.total_unloaded 
 
+        self._results.ships_results = []
         for s in self.source_ships:
             (ship, gen ) = s
             self._results.ships_results.append(ShipResultsValueObject(

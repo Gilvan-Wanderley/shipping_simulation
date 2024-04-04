@@ -8,8 +8,13 @@ class Simulater:
     def __init__(self) -> None:
         self._handler_file = HandlerFile()
         self._builder = SimulationBuilder()
+        self._simulation = None
         self._results = SimulationResultsValueObject()
         self._flowsheet = None
+    
+    @property
+    def simulation(self) -> Simulation:
+        return self._simulation
     
     @property
     def handler_file(self) -> HandlerFile:
@@ -23,9 +28,9 @@ class Simulater:
     def results(self) -> SimulationResultsValueObject:
         return self._results 
     
-    @results.setter
-    def results(self, value: SimulationResultsValueObject) -> None:
-        self._results  = value
+    # @results.setter
+    # def results(self, value: SimulationResultsValueObject) -> None:
+    #     self._results  = value
     
     def set_flowsheet(self, flowsheet: Flowsheet) -> None:
         self._flowsheet = flowsheet
@@ -34,6 +39,6 @@ class Simulater:
         container = Container(simpy.Environment(),
                               StandardInputOutput(self._flowsheet),
                               self._builder)
-        simulation = Simulation(container)
-        simulation.run_up(end_time)
-        self._results = simulation.results
+        self._results = SimulationResultsValueObject()
+        self._simulation =Simulation(container, self._results)
+        self._simulation.run_up(end_time)

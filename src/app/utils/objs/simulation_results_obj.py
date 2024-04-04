@@ -11,3 +11,7 @@ class SimulationResultsValueObject():
     @property
     def ships_results(self) -> list[ShipResultsValueObject]:
         return self._ships
+    
+    @ships_results.setter
+    def ships_results(self, value: list[ShipResultsValueObject]) -> None:
+        self._ships = value

@@ -44,7 +44,7 @@ class ContentLayout(tk.Canvas):
         self.configure(scrollregion=self.bbox("all"))
 
     def build_flowsheet(self) -> None:
-        self._flowsheet = Flowsheet(self._frame)
+        self._flowsheet = Flowsheet(self._frame, self._simulater)
         self._simulater.set_flowsheet(self._flowsheet)
         self._flowsheet.grid(row=1, column=0, columnspan=2, 
                                    sticky=tk.N+tk.S+tk.W+tk.E,
