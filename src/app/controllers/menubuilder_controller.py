@@ -26,6 +26,7 @@ class MenuBuilderController:
             messagebox.showerror('Erro', 'Invalid value for run until')
             end_timevar.set(0.0)
             return
-        
+
+         self._app._content.rerender_flowsheet()
          self._simulater.run_up(end_time) 
          self._app.rerender()

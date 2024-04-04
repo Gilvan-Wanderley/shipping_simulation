@@ -3,7 +3,7 @@ from tkinter import ttk
 from ..simulater import Simulater
 from ..controllers import MenuBuilderController
 from .components import LabelEntry, LabelVariable, TableView
-import threading
+from threading import Thread
 
 class MenuBuilder(tk.Frame):
     def __init__(self, master, simulater: Simulater) -> None:
@@ -27,7 +27,9 @@ class MenuBuilder(tk.Frame):
         self._port_frame()
 
     def _run_simulation_command(self) -> None:
-        self._controller.run_simulation_command(self._run_up)
+        new_thread = Thread(target= lambda: self._controller.run_simulation_command(self._run_up),
+                            daemon=True)
+        new_thread.start()        
 
     def _run_frame(self) -> None:
         run_menu = tk.Frame(self)
@@ -37,7 +39,7 @@ class MenuBuilder(tk.Frame):
         run_menu.lbl_run.pack(side='left', padx=4, pady=4)
 
         run_menu.btn_run = ttk.Button(run_menu, text='Run Simulation', 
-                                      command= threading.Thread(target=self._run_simulation_command).start)
+                                      command= self._run_simulation_command)
         run_menu.btn_run.pack(side='right', padx=4, pady=4)
 
     def _port_frame(self) -> None:

@@ -36,9 +36,9 @@ class Simulation:
     def run_up(self, end_time: float):
         self._container.env.run(until=end_time+0.001)
 
-        self._results.ships_arrival = self.port.total_unloaded
-        self._results.ships_departure = len(self.port.records.arrival)
-        self._results.unloaded_total = len(self.port.records.departured)
+        self._results.ships_arrival = len(self.port.records.arrival) 
+        self._results.ships_departure = len(self.port.records.departured)
+        self._results.unloaded_total = self.port.total_unloaded 
 
         for s in self.source_ships:
             (ship, gen ) = s

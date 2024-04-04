@@ -22,4 +22,6 @@ class PortPropertiesValueObject():
         self._unload_rate = value
 
     def is_complete(self) -> bool:
+        if self.num_berths == None or self.unload_rate == None:
+            return False
         return self.num_berths > 0 and self.unload_rate > 0
