@@ -1,7 +1,6 @@
 import simpy
 from enum import Enum
 from dataclasses import dataclass
-# from ..container import Container
 
 
 class ShipStatus(Enum):

@@ -26,7 +26,7 @@ class MenuShip(tk.Frame):
         self.build_view()
 
     def build_view(self) -> None:
-        self._image = ImageSource.get_image('ship_menu', (190,110))
+        self._image = ImageSource.get_photo_image('ship_menu', (190,110))
         self._tilte = ttk.Label(self, text='Ship Menu')
         self._tilte.pack()
 

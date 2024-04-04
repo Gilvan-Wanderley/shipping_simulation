@@ -24,7 +24,7 @@ class MenuPort(tk.Frame):
         return self._unloading_rate
     
     def build_view(self) -> None:
-        self._image = ImageSource.get_image('port_menu', (180,134))
+        self._image = ImageSource.get_photo_image('port_menu', (180,134))
         self._tilte = ttk.Label(self, text='Port Menu')
         self._tilte.pack()
 

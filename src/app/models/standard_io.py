@@ -1,9 +1,12 @@
 from abc import ABC
 from .entities import Ship, Port
+from ..views.flowsheet import Flowsheet
 
-class StandardInputOutput(ABC):
-    def create_ship(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   {ship.name} arrivel.')
+class StandardInputOutput():
+    def updadte(self):
+        pass
+    def __init__(self, flowsheet: Flowsheet) -> None:
+        self._flowsheet = flowsheet
 
     def port_status(self, time: float, port: Port):
         print(f'{time: .2f}h |   users: {port.occupancy} and queue: {port.queue}')
@@ -11,20 +14,11 @@ class StandardInputOutput(ABC):
     def port_registring(self, time: float, ship: Ship):
         print(f'{time: .2f}h |   registring {ship.name} at port')
 
+    def arrived_ship(self, time: float, ship: Ship):
+        self._flowsheet.arrived_ship(ship)
+
     def docking(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   docking {ship.name}.')
-
-    def docked(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   docked {ship.name}.')
-
-    def unloading(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   unloading {ship.name}.')
-
-    def unloaded(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   unloaded {ship.name}.')
+        self._flowsheet.docking_ship(ship)
 
     def departuring(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   departuring {ship.name}.')
-
-    def departured(self, time: float, ship: Ship):
-        print(f'{time: .2f}h |   departured {ship.name}.')
+        self._flowsheet.departuring_ship(ship)

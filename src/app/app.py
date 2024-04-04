@@ -24,7 +24,5 @@ class App(tk.Tk):
         self._content.pack(side='left', fill='both', expand=True)
     
     def rerender(self):
-        self._menubar.destroy()
-        self._content.destroy()
-        self._footer.destroy()
-        self.build_view()
+        self._content.rerender()
+        self._footer.rerender()

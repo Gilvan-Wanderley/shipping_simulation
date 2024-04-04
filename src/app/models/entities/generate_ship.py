@@ -1,4 +1,3 @@
-# from ..container import Container
 from .ship import Ship, ShipStatus
 from .port import Port
 
@@ -69,16 +68,16 @@ class GenerateShip:
     def run(self, port: Port):
         while True:
             yield self._container.env.timeout(self.frequency)
-            ship = self.__createShip(self._count)
+            ship = self._createShip(self._count)
             self._container.env.process(port.run(ship))
             self._count += 1
 
-    def __createShip(self, id: int) -> Ship:
+    def _createShip(self, id: int) -> Ship:
         ship = Ship(self._container,
                     f'{self._shipType.name}[{id}]',
                     self._shipType.capacity)
         ship.status = ShipStatus.arrived
-        self._container.stdio.create_ship(self._container.env.now,
+        self._container.stdio.arrived_ship(self._container.env.now,
                                           ship)
         self._records.append(ship)
         return ship

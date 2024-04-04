@@ -1,33 +1,31 @@
 import tkinter as tk
+from PIL import Image, ImageTk
+
+def rotate_image():
+    # Load the image
+    original_image = Image.open("src\\app\\assets\\images\\ship_flow.png")
+    rotated_image = original_image.rotate(90)
+
+    # Convert the rotated image to Tkinter format
+    tk_image = ImageTk.PhotoImage(rotated_image)
+
+    # Update the label with the rotated image
+    label.config(image=tk_image)
+    label.image = tk_image  # Keep a reference to avoid garbage collection
 
 root = tk.Tk()
 root.geometry("300x200")
 
-# Criar um canvas para conter o conteúdo rolável
-canvas = tk.Canvas(root)
-canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+# Load the initial image
+initial_image = Image.open("src\\app\\assets\\images\\ship_flow.png")
+tk_initial_image = ImageTk.PhotoImage(initial_image)
 
-# Criar uma barra de rolagem vertical
-scrollbar = tk.Scrollbar(root, orient=tk.VERTICAL, command=canvas.yview)
-scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+# Create Label with initial image
+label = tk.Label(root, image=tk_initial_image)
+label.pack()
 
-# Configurar a barra de rolagem para funcionar com o canvas
-canvas.configure(yscrollcommand=scrollbar.set)
-
-# Criar um frame dentro do canvas para conter o conteúdo
-frame = tk.Frame(canvas)
-canvas.create_window((0, 0), window=frame, anchor="nw")
-
-# Adicionar algum conteúdo ao frame (por exemplo, uma caixa de listagem)
-listbox = tk.Listbox(frame)
-for i in range(100):
-    listbox.insert(tk.END, f"Item {i}")
-listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-# Configurar a função de rolagem do canvas
-def on_configure(event):
-    canvas.configure(scrollregion=canvas.bbox("all"))
-
-canvas.bind("<Configure>", on_configure)
+# Button to rotate the image
+rotate_button = tk.Button(root, text="Rotate Image", command=rotate_image)
+rotate_button.pack()
 
 root.mainloop()
