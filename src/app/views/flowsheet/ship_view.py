@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from ...models.entities import Ship, ShipStatus
-from ...utils.image_handler import ImageSource
+from ...services.image_handler import ImageSource
 import time
 from PIL import ImageTk
 
@@ -10,7 +10,6 @@ class ShipView(ImageTk.PhotoImage):
     def __init__(self, canvas: tk.Canvas, ship: Ship) -> None:
         super().__init__(ImageSource.get_image('ship_flow', (100,25)))
         self._canvas = canvas
-        # self._id  = canvas.create_image(50, 91, image=img)
         self._ship = ship
         self._on_port = False
         self._on_wait_stage = False
@@ -48,14 +47,14 @@ class ShipView(ImageTk.PhotoImage):
         match self.status:
             case ShipStatus.arrived:
                 self._canvas.move(self.id, 5.0, 0.0)
-                time.sleep(10/1000)
+                time.sleep(self._canvas.slowly/1000)
                 if self.position[0] >= 350:
                     self._on_wait_stage = True
             case ShipStatus.waitting:
                 pass
             case ShipStatus.docking:
                 self._canvas.move(self.id, 5.0, 0.0)
-                time.sleep(10/1000)
+                time.sleep(self._canvas.slowly/1000)
                 if self.position[0] >= 830:
                     self._on_port = True
             case ShipStatus.docked:

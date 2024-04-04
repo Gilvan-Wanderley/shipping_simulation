@@ -61,38 +61,31 @@ class Port:
     def _portPorcess(self, ship: Ship):
         self.records.arrival.append(ShipRegister(self._container.env.now, ship))
 
-        self._container.stdio.port_registring(self._container.env.now, ship)
         ship.status = ShipStatus.waitting
         with self.berths.request() as request:
             yield request
             tryDock = True
             while tryDock:
                 if request.triggered:
-                    self._container.stdio.port_status(self._container.env.now, self)
                     yield self._container.env.process(self._docking(ship))
                     yield self._container.env.process(self._unloading(ship))
                     yield self._container.env.process(self._departuring(ship))
                     tryDock = False
                 else:
                     tryDock = True
-                self._container.stdio.port_status(self._container.env.now, self)
 
     def _docking(self, ship: Ship):
         dockingTime = 0.2  # WARNING
 
         ship.status = ShipStatus.docking
         self._container.stdio.docking(self._container.env.now, ship)
-
         yield self._container.env.timeout(dockingTime)
-
         ship.status = ShipStatus.docked
         self.records.docked.append(ShipRegister(self._container.env.now, ship))
 
     def _unloading(self, ship: Ship):
         ship.status = ShipStatus.unloading
-
         yield self._container.env.process(self._unloadShip(ship))
-
         ship.status = ShipStatus.unloaded
         self.records.unloaded.append(ShipRegister(self._container.env.now, ship))
 
@@ -101,9 +94,7 @@ class Port:
 
         ship.status = ShipStatus.departuring
         self._container.stdio.departuring(self._container.env.now, ship)
-
         yield self._container.env.timeout(departureTime)
-
         ship.status = ShipStatus.departured
         self.records.departured.append(ShipRegister(self._container.env.now, ship))
 
@@ -114,3 +105,4 @@ class Port:
             yield self._container.env.timeout(timeStep)            
             amount = ship.unloading(try_amount)
             self._totalUnloaded += amount
+            self._container.stdio.update_time(self._container.env.now)

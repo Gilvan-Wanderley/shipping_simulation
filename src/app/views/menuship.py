@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from ..simulater import Simulater
 from ..controllers import MenuShipController
-from ..utils.image_handler import ImageSource
+from ..services.image_handler import ImageSource
 
 
 class MenuShip(tk.Frame):

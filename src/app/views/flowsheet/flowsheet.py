@@ -1,15 +1,37 @@
 import tkinter as tk
 from .ship_view import ShipView
 from ...models.entities import Ship, ShipStatus
+from ...services.image_handler import ImageSource
+
 
 class Flowsheet(tk.Canvas):
     def __init__(self, master: tk.Misc) -> None:
         super().__init__(master, background='#0096C7',height=200, width=1030)
-        self.create_rectangle((830, 0), (1040, 210) , fill='#DDD', )
-
         self._ships_waitting : list[ShipView] = []
         self._ships_unloading : list[ShipView] = []
+        self._slowly = tk.DoubleVar(self, 10)
+        self.create_rectangle((830, 0), (1040, 210) , fill='#DDD', )
+        self._scalebar = tk.Scale(self, from_=0, to=20, 
+                                  orient='horizontal',
+                                  label='Animation Speed',
+                                  length=200,
+                                  showvalue=False,
+                                  variable=self._slowly)
+        
+        self.create_window(105,205, window=self._scalebar, anchor='s')
+        self._time_id = self.create_text(5,5, 
+                                         text=f'Time: {0.00: .2f} days', 
+                                         anchor='nw',
+                                         fill='white',
+                                         font=('15'))
+       
+
+    @property
+    def slowly(self) -> float:
+        return self._scalebar.cget('to') - self._slowly.get()
     
+    def update_time(self, time: float) -> None:
+        self.itemconfig(self._time_id, text=f'Time: {time: .2f} days')
 
     def arrived_ship(self, ship: Ship) -> None:
         ship_view = ShipView(self, ship)
@@ -32,7 +54,6 @@ class Flowsheet(tk.Canvas):
             while sv_departuring.on_port:
                 sv_departuring.action()
             self._ships_unloading.remove(sv_departuring)
-
 
     
 

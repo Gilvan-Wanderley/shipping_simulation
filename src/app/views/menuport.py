@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from ..simulater import Simulater
 from ..controllers import MenuPortController
-from ..utils.image_handler import ImageSource
+from ..services.image_handler import ImageSource
 
 class MenuPort(tk.Frame):
     def __init__(self, master, simulater: Simulater):

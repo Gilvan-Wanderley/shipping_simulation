@@ -1,31 +1,23 @@
 import tkinter as tk
-from PIL import Image, ImageTk
 
-def rotate_image():
-    # Load the image
-    original_image = Image.open("src\\app\\assets\\images\\ship_flow.png")
-    rotated_image = original_image.rotate(90)
+def on_scale_change(value):
+    label.config(text=f"Velocidade: {value}")
 
-    # Convert the rotated image to Tkinter format
-    tk_image = ImageTk.PhotoImage(rotated_image)
-
-    # Update the label with the rotated image
-    label.config(image=tk_image)
-    label.image = tk_image  # Keep a reference to avoid garbage collection
-
+# Cria uma janela Tkinter
 root = tk.Tk()
-root.geometry("300x200")
+root.title("Barra de Velocidade")
 
-# Load the initial image
-initial_image = Image.open("src\\app\\assets\\images\\ship_flow.png")
-tk_initial_image = ImageTk.PhotoImage(initial_image)
+# Cria uma label para o texto
+text_label = tk.Label(root, text="Selecione a velocidade:")
+text_label.pack()
 
-# Create Label with initial image
-label = tk.Label(root, image=tk_initial_image)
+# Cria um controle deslizante (Scale) sem mostrar o valor atual
+scale = tk.Scale(root, from_=0, to=100, orient="horizontal", length=200, showvalue=False, command=on_scale_change)
+scale.pack(pady=10)
+
+# Cria uma label para mostrar o valor da velocidade selecionada
+label = tk.Label(root, text="Velocidade: 0")
 label.pack()
 
-# Button to rotate the image
-rotate_button = tk.Button(root, text="Rotate Image", command=rotate_image)
-rotate_button.pack()
-
+# Inicia o loop de eventos do Tkinter
 root.mainloop()
