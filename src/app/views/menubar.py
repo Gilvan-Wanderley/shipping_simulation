@@ -2,6 +2,7 @@ import tkinter as tk
 from ..simulater import Simulater
 from ..controllers import MenuBarController
 
+
 class MenuBar(tk.Menu):
     def __init__(self, app, simulater: Simulater) -> None:
         super().__init__(app)

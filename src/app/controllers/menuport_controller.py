@@ -2,6 +2,7 @@ import tkinter as tk
 from ..simulater import Simulater
 from tkinter import messagebox
 
+
 class MenuPortController():
     def __init__(self, simulater: Simulater, app) -> None:
         self._simulater = simulater

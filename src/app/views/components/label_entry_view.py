@@ -2,6 +2,7 @@ from typing import Union
 from tkinter import ttk
 import tkinter as tk
 
+
 class LabelEntry(ttk.Frame):
     def __init__(self, 
                  master, 

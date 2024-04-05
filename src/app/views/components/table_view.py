@@ -1,5 +1,5 @@
 from tkinter import ttk
-import tkinter as tk
+
 
 class TableView(ttk.Frame):
     def __init__(self, master, header: dict):

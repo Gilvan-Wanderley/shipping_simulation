@@ -2,6 +2,7 @@ import simpy
 from dataclasses import dataclass, field
 from .ship import Ship, ShipStatus
 
+
 @dataclass
 class ShipRegister:
     time: float
@@ -75,7 +76,7 @@ class Port:
                     tryDock = True
 
     def _docking(self, ship: Ship):
-        dockingTime = 0.2  # WARNING
+        dockingTime = 0.001  # WARNING
 
         ship.status = ShipStatus.docking
         self._container.stdio.docking(self._container.env.now, ship)
@@ -90,7 +91,7 @@ class Port:
         self.records.unloaded.append(ShipRegister(self._container.env.now, ship))
 
     def _departuring(self, ship: Ship):
-        departureTime = 0.1  # WARNING
+        departureTime = 0.001  # WARNING
 
         ship.status = ShipStatus.departuring
         self._container.stdio.departuring(self._container.env.now, ship)

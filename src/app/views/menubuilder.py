@@ -5,6 +5,7 @@ from ..controllers import MenuBuilderController
 from .components import LabelEntry, LabelVariable, TableView
 from threading import Thread
 
+
 class MenuBuilder(tk.Frame):
     def __init__(self, master, simulater: Simulater) -> None:
         super().__init__(master)

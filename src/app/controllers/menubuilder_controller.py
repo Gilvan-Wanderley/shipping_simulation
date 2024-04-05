@@ -30,3 +30,4 @@ class MenuBuilderController:
          self._app._content.rerender_flowsheet()
          self._simulater.run_up(end_time) 
          self._app.rerender()
+         messagebox.showinfo('Finish', 'The simulation is complete!')

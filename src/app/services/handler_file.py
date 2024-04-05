@@ -2,6 +2,7 @@ import json
 from typing import Union
 from ..utils.objs import SimulationValueObject, ShipPropertiesValueObject
 
+
 class HandlerFile():
     def __init__(self) -> None:
         self._path = ''

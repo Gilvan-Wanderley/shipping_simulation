@@ -64,7 +64,7 @@ class ShipView(ImageTk.PhotoImage):
                 pass
             case ShipStatus.departuring:
                 self._canvas.move(self.id, 0.0, -5.0)
-                time.sleep(10/1000)
+                time.sleep(self._canvas.slowly/1000)
                 if self.position[1] <= -13.0:
                     self._canvas.move(self.id, 0.0, -5.0)
                     self._on_port = False

@@ -4,6 +4,7 @@ from .utils.objs import SimulationResultsValueObject
 from .models import Simulation, Container, StandardInputOutput
 from .views.flowsheet import Flowsheet
 
+
 class Simulater:
     def __init__(self) -> None:
         self._handler_file = HandlerFile()
@@ -27,10 +28,6 @@ class Simulater:
     @property
     def results(self) -> SimulationResultsValueObject:
         return self._results 
-    
-    # @results.setter
-    # def results(self, value: SimulationResultsValueObject) -> None:
-    #     self._results  = value
     
     def set_flowsheet(self, flowsheet: Flowsheet) -> None:
         self._flowsheet = flowsheet

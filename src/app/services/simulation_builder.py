@@ -1,5 +1,6 @@
 from ..utils.objs import SimulationValueObject
 
+
 class SimulationBuilder():
     def __init__(self) -> None:
         self._simulation_obj = SimulationValueObject()

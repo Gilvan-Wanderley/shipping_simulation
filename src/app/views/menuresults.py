@@ -3,6 +3,7 @@ from tkinter import ttk
 from ..simulater import Simulater
 from .components import TableView, LabelVariable
 
+
 class MenuResults(tk.Frame):
     def __init__(self, master, simulater: Simulater) -> None:
         super().__init__(master)

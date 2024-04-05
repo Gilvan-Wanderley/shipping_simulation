@@ -3,6 +3,7 @@ from .container import Container
 from .entities import Port, Ship, GenerateShip
 from ..utils.objs import ShipResultsValueObject
 
+
 class Simulation:
     def __init__(self, container: Container, results: SimulationResultsValueObject) -> None:
         self._container = container

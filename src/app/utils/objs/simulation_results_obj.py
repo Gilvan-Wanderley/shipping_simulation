@@ -1,5 +1,6 @@
 from .ship_results_obj import  ShipResultsValueObject
 
+
 class SimulationResultsValueObject():
     unloaded_total: float = 0.0
     ships_arrival: int = 0

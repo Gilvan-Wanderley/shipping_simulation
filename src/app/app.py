@@ -3,6 +3,7 @@ from .views import MenuBar, ContentLayout, Footer
 from .simulater import Simulater
 from .services import ImageSource
 
+
 class App(tk.Tk):
     def __init__(self) -> None:
         super().__init__()

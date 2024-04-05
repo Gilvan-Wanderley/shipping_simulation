@@ -1,6 +1,7 @@
 from .entities import Ship
 from ..views.flowsheet import Flowsheet
 
+
 class StandardInputOutput():
     def __init__(self, flowsheet: Flowsheet) -> None:
         self._flowsheet = flowsheet
@@ -10,8 +11,6 @@ class StandardInputOutput():
         self._flowsheet.arrived_ship(ship)
         self.update_time(time)
         self._menu_result.update_results()
-        
-        
 
     def docking(self, time: float, ship: Ship) -> None:
         self._flowsheet.docking_ship(ship)

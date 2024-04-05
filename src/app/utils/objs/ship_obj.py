@@ -1,5 +1,6 @@
 from .ship_properties_obj import ShipPropertiesValueObject
 
+
 class ShipValueObject():
     def __init__(self) -> None:
         self._entities : list[ShipPropertiesValueObject] = []  

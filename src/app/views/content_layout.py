@@ -6,6 +6,7 @@ from .menubuilder import MenuBuilder
 from .menuresults import MenuResults
 from .flowsheet import Flowsheet
 
+
 class ContentLayout(tk.Canvas):
     def __init__(self, root, simulater: Simulater) -> None:
         super().__init__(root, background='#D9D9D9')

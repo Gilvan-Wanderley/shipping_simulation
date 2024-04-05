@@ -4,6 +4,7 @@ from ..simulater import Simulater
 from ..controllers import MenuPortController
 from ..services.image_handler import ImageSource
 
+
 class MenuPort(tk.Frame):
     def __init__(self, master, simulater: Simulater):
         super().__init__(master)

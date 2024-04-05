@@ -1,5 +1,6 @@
 from PIL import Image, ImageTk
 
+
 class ImageSource():
     source = {
         'ship_menu': 'src\\app\\assets\\images\\ship_menu.png',
