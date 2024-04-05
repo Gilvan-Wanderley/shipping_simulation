@@ -1,6 +1,6 @@
 
 
-class PortPropertiesObjectValue():
+class PortPropertiesValueObject():
     def __init__(self) -> None:
         self._num_berths: int = None
         self._unload_rate: float = None
@@ -22,4 +22,6 @@ class PortPropertiesObjectValue():
         self._unload_rate = value
 
     def is_complete(self) -> bool:
+        if self.num_berths == None or self.unload_rate == None:
+            return False
         return self.num_berths > 0 and self.unload_rate > 0

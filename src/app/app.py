@@ -1,21 +1,25 @@
 import tkinter as tk
 from .views import MenuBar, ContentLayout, Footer
 from .simulater import Simulater
+from .services import ImageSource
+
 
 class App(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self._simulater = Simulater()
         self.title('Shipping Simulation')
-        self.geometry('1024x740')
-        self.setup()
+        self.geometry('1050x800')
+        self.minsize(1050, 800)
+        self.iconphoto(False, ImageSource.get_photoimage('icon',(1000,1000)))
+        self.build_view()
         self.mainloop()
     
     @property
     def simulater(self) -> Simulater:
         return self._simulater
     
-    def setup(self) -> None:
+    def build_view(self) -> None:
         self._menubar = MenuBar(self, self.simulater)
         self._content = ContentLayout(self, self.simulater)
         self._footer = Footer(self, self.simulater)
@@ -24,7 +28,5 @@ class App(tk.Tk):
         self._content.pack(side='left', fill='both', expand=True)
     
     def rerender(self):
-        self._menubar.destroy()
-        self._content.destroy()
-        self._footer.destroy()
-        self.setup()
+        self._content.rerender()
+        self._footer.rerender()

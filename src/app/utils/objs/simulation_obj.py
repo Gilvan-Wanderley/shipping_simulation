@@ -1,19 +1,19 @@
-from .ship_obj import ShipObjectValue
-from .port_properties_obj import PortPropertiesObjectValue
+from .ship_obj import ShipValueObject
+from .port_properties_obj import PortPropertiesValueObject
 
 
-class SimulationObjectValue():
+class SimulationValueObject():
     def __init__(self) -> None:
-        self._port = PortPropertiesObjectValue()
-        self._ship = ShipObjectValue()
+        self._port = PortPropertiesValueObject()
+        self._ships = ShipValueObject()
 
     @property
-    def port(self) -> PortPropertiesObjectValue:
+    def port(self) -> PortPropertiesValueObject:
         return self._port
     
     @property
-    def ship(self) -> ShipObjectValue:
-        return self._ship
+    def ships(self) -> ShipValueObject:
+        return self._ships
 
     def is_complete(self) -> bool:
         if self._port.is_complete() or self._ships.is_complete():
@@ -28,7 +28,7 @@ class SimulationObjectValue():
                 'unload_rate': self.port.unload_rate
             },
             'ships': []}
-        for props in self.ship.entities:
+        for props in self._ships.entities:
             simulation_dict['ships'].append({
                 'name': props.name,
                 'capacity': props.capacity,

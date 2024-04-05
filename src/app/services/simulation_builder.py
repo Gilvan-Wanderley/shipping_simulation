@@ -1,14 +1,15 @@
-from ..utils.objs import SimulationObjectValue
+from ..utils.objs import SimulationValueObject
+
 
 class SimulationBuilder():
     def __init__(self) -> None:
-        self._simulation_obj = SimulationObjectValue()
+        self._simulation_obj = SimulationValueObject()
 
     @property
-    def simulation_obj(self) -> SimulationObjectValue:
+    def sim_obj(self) -> SimulationValueObject:
         return self._simulation_obj
     
-    @simulation_obj.setter
-    def simulation_obj(self, sim_obj: SimulationObjectValue) -> None:
+    @sim_obj.setter
+    def sim_obj(self, sim_obj: SimulationValueObject) -> None:
         self._simulation_obj = sim_obj
 
