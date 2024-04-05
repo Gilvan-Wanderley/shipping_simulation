@@ -9,7 +9,7 @@ class Flowsheet(tk.Canvas):
         self._ships_waitting : list[ShipView] = []
         self._ships_unloading : list[ShipView] = []
         self._slowly = tk.DoubleVar(self, 10)
-        self.create_rectangle((830, 0), (1040, 210) , fill='#DDD', )
+        self.create_rectangle((830, 0), (1040, 210) , fill='#3d251e', )
         self._scalebar = tk.Scale(self, from_=0, to=20, 
                                   orient='horizontal',
                                   label='Animation Speed',

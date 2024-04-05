@@ -5,9 +5,10 @@ class ImageSource():
         'ship_menu': 'src\\app\\assets\\images\\ship_menu.png',
         'port_menu': 'src\\app\\assets\\images\\port_menu.png',
         'ship_flow': 'src\\app\\assets\\images\\ship_flow.png',
+        'icon': 'src\\app\\assets\\icon\\icons.ico'
     }
 
-    def get_photo_image(name: str, size: tuple[int, int]) -> ImageTk:
+    def get_photoimage(name: str, size: tuple[int, int]) -> ImageTk:
         image = ImageSource.get_image(name, size)
         return ImageTk.PhotoImage(image)
     

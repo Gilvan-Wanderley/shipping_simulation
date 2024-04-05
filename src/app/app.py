@@ -1,6 +1,7 @@
 import tkinter as tk
 from .views import MenuBar, ContentLayout, Footer
 from .simulater import Simulater
+from .services import ImageSource
 
 class App(tk.Tk):
     def __init__(self) -> None:
@@ -8,6 +9,8 @@ class App(tk.Tk):
         self._simulater = Simulater()
         self.title('Shipping Simulation')
         self.geometry('1050x800')
+        self.minsize(1050, 800)
+        self.iconphoto(False, ImageSource.get_photoimage('icon',(1000,1000)))
         self.build_view()
         self.mainloop()
     

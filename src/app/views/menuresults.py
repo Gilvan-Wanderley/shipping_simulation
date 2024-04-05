@@ -9,7 +9,7 @@ class MenuResults(tk.Frame):
         self._app = master.master
         self._simulater = simulater
         self._results ={
-            'unloaded_total': tk.DoubleVar(value="{:,.2f}".format(self._simulater.results.unloaded_total)),
+            'unloaded_total': tk.DoubleVar(value="{:,.1f}".format(self._simulater.results.unloaded_total)),
             'ships_arrival': tk.IntVar(value=simulater.results.ships_arrival),
             'ships_departure': tk.IntVar(value=simulater.results.ships_departure),
             'ships': simulater.results.ships_results 
